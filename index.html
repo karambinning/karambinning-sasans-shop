@@ -128,8 +128,21 @@
     font-size: clamp(3.6rem, 16vw, 14rem);
     letter-spacing:-0.045em;
     color:var(--ink);
+    display:flex; flex-direction:column; align-items:flex-start;
   }
-  .hero__name .dot{ color:var(--mocha) }
+  .hero__name .word-main{ display:block; line-height:.88 }
+  .hero__name .word-sub{
+    display:block;
+    font-family:var(--font-body);
+    font-style:italic;
+    font-weight:500;
+    font-size: clamp(1.6rem, 5.6vw, 4.6rem);
+    letter-spacing:-0.012em;
+    color:var(--umber);
+    margin-top: clamp(.4rem, 1vw, 1rem);
+    line-height:1;
+  }
+  .hero__name .dot{ color:var(--mocha); font-style:normal }
   .hero__meta{
     font-family:var(--font-body);
     font-size:.92rem; line-height:1.55;
@@ -385,7 +398,10 @@
 
   <!-- ── hero ────────────────────────────────────── -->
   <section class="hero" style="border-top:none">
-    <h1 class="hero__name">Sasans<span class="dot">.</span></h1>
+    <h1 class="hero__name">
+      <span class="word-main">Sasans</span>
+      <span class="word-sub">Shop<span class="dot">.</span></span>
+    </h1>
     <aside class="hero__meta">
       <b>A small retailer on Kirkgate.</b><br>
       Thirty-three Kirkgate, central Wakefield, <i>WF1&nbsp;1HS</i>.<br><br>
