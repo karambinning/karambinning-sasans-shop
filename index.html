@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sasans Shop — 33 Kirkgate, Wakefield WF1 1HS</title>
+<meta name="description" content="Sasans Shop. A small Kirkgate retailer in central Wakefield. 33 Kirkgate, WF1 1HS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E8DDD3;
+    --paper-warm:#F1E8DE;
+    --ink:#1F1611;
+    --umber:#6E4B3A;
+    --mocha:#A47864;
+    --rule:rgba(31,22,17,.18);
+    --rhythm: clamp(.98rem, .6rem + .9vw, 1.18rem);
+    --font-display:"Bricolage Grotesque", "Bodoni 72", Georgia, serif;
+    --font-body:"Newsreader", "Iowan Old Style", "Palatino", serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:var(--rhythm);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* paper grain overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0; pointer-events:none; z-index:1000;
+    opacity:.35; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .12 0 0 0 0 .09 0 0 0 0 .07 0 0 0 .6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/></svg>");
+    background-size:240px 240px;
+  }
+
+  h1,h2,h3,.display{
+    font-family:var(--font-display);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    text-wrap:balance;
+    line-height:.92;
+  }
+  p{ text-wrap:pretty; hyphens:auto; }
+  a{ color:inherit; text-decoration:none }
+
+  /* ── top marquee ───────────────────────────────────── */
+  .ticker{
+    border-bottom:1px solid var(--rule);
+    overflow:hidden;
+    background:var(--paper-warm);
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--umber);
+    --speed:46s;
+  }
+  .ticker__track{
+    display:inline-flex;
+    gap:3.2rem;
+    white-space:nowrap;
+    padding:.85rem 0;
+    animation:tickrun var(--speed) linear infinite;
+    will-change:transform;
+  }
+  .ticker__track span::after{
+    content:"·";
+    display:inline-block;
+    margin-left:3.2rem;
+    color:var(--mocha);
+  }
+  @keyframes tickrun { to { transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .ticker__track{ animation:none } }
+
+  /* ── shell ─────────────────────────────────────────── */
+  .shell{
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 clamp(1.2rem, 4vw, 3.4rem);
+    position:relative;
+    z-index:2;
+  }
+
+  /* ── topbar ────────────────────────────────────────── */
+  .topbar{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding:1.6rem 0 1.1rem;
+    border-bottom:1px solid var(--rule);
+    gap:1.2rem; flex-wrap:wrap;
+  }
+  .mark{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:.02em;
+  }
+  .mark em{ font-style:italic; color:var(--umber); font-weight:500 }
+  .topbar nav{ display:flex; gap:1.4rem; font-size:.86rem; letter-spacing:.06em; text-transform:uppercase; color:var(--umber) }
+  .topbar nav a{ position:relative }
+  .topbar nav a::after{
+    content:""; position:absolute; left:0; right:0; bottom:-4px;
+    height:1px; background:currentColor; transform:scaleX(0); transform-origin:left;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .topbar nav a:hover::after{ transform:scaleX(1) }
+
+  /* ── hero ──────────────────────────────────────────── */
+  .hero{
+    padding:clamp(2.6rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 4.4rem);
+    display:grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .42fr);
+    gap: clamp(1.6rem, 4vw, 4rem);
+    align-items:end;
+  }
+  @media (max-width:780px){ .hero{ grid-template-columns:1fr; gap:2.4rem } }
+
+  .hero__name{
+    font-size: clamp(3.6rem, 16vw, 14rem);
+    letter-spacing:-0.045em;
+    color:var(--ink);
+  }
+  .hero__name .dot{ color:var(--mocha) }
+  .hero__meta{
+    font-family:var(--font-body);
+    font-size:.92rem; line-height:1.55;
+    color:var(--umber);
+    border-left:1px solid var(--rule);
+    padding-left:1.2rem;
+    align-self:end;
+  }
+  @media (max-width:780px){ .hero__meta{ border-left:none; padding-left:0; border-top:1px solid var(--rule); padding-top:1.2rem } }
+  .hero__meta b{ color:var(--ink); font-weight:600 }
+  .hero__meta i{ font-style:italic }
+
+  /* ── reveal ────────────────────────────────────────── */
+  @supports (animation-timeline: view()){
+    .reveal{ animation: rise both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
+    @keyframes rise{ from{ opacity:0; transform:translateY(1.4rem) } to{ opacity:1; transform:none } }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ animation:none !important; opacity:1 !important; transform:none !important }
+  }
+
+  /* ── section frame ─────────────────────────────────── */
+  section{ padding: clamp(2.4rem, 6vw, 5rem) 0; border-top:1px solid var(--rule); }
+  .eyebrow{
+    font-family:var(--font-body);
+    font-size:.78rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--umber); font-weight:500;
+    margin-bottom:1.4rem;
+    display:flex; align-items:center; gap:.7rem;
+  }
+  .eyebrow::before{ content:""; width:1.6rem; height:1px; background:var(--mocha) }
+
+  /* ── where ─────────────────────────────────────────── */
+  .where{
+    display:grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(1.6rem, 5vw, 4rem);
+    align-items:start;
+  }
+  @media (max-width:780px){ .where{ grid-template-columns:1fr } }
+
+  .letterhead{
+    font-family:var(--font-display);
+    font-size: clamp(1.6rem, 4.2vw, 2.8rem);
+    font-weight:500;
+    line-height:1.05;
+    letter-spacing:-0.015em;
+    color:var(--ink);
+  }
+  .letterhead em{ font-style:italic; color:var(--umber); font-weight:400 }
+  .letterhead .post{
+    display:block;
+    margin-top:.9rem;
+    font-size: clamp(2.2rem, 7vw, 4.4rem);
+    font-weight:800;
+    letter-spacing:-0.03em;
+    color:var(--ink);
+  }
+
+  .find{
+    font-size:1.02rem; line-height:1.7;
+    color:#2a1f18;
+  }
+  .find p + p{ margin-top:1rem }
+  .find a.cta{
+    display:inline-flex; align-items:center; gap:.65rem;
+    margin-top:1.6rem;
+    padding:.95rem 1.4rem;
+    background:var(--ink);
+    color:var(--paper-warm);
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:.01em;
+    font-size:.96rem;
+    border:1px solid var(--ink);
+    transition: background .3s ease, color .3s ease, transform .3s ease;
+  }
+  .find a.cta:hover{ background:var(--mocha); border-color:var(--mocha); transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink) }
+  .find a.cta svg{ width:1rem; height:1rem }
+
+  .find dl{
+    margin-top:1.8rem;
+    border-top:1px solid var(--rule);
+    padding-top:1.2rem;
+    display:grid; grid-template-columns:auto 1fr; gap:.45rem 1.2rem;
+    font-size:.92rem;
+  }
+  .find dt{ color:var(--umber); font-family:var(--font-display); font-weight:500; letter-spacing:.04em; text-transform:uppercase; font-size:.74rem; padding-top:.18rem }
+  .find dd{ color:var(--ink) }
+
+  /* ── hygiene ───────────────────────────────────────── */
+  .hygiene{
+    background:var(--paper-warm);
+    margin: 0 calc(-1 * clamp(1.2rem, 4vw, 3.4rem));
+    padding: clamp(2.4rem, 6vw, 5rem) clamp(1.2rem, 4vw, 3.4rem);
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+  .hygiene__inner{
+    display:grid;
+    grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+    gap: clamp(1.4rem, 4vw, 3.4rem);
+    align-items:start;
+  }
+  @media (max-width:780px){ .hygiene__inner{ grid-template-columns:1fr } }
+
+  .stamp{
+    border:1px solid var(--ink);
+    padding: clamp(1.4rem, 3.4vw, 2.2rem);
+    background:var(--paper);
+    position:relative;
+  }
+  .stamp::after{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px dashed var(--rule);
+    pointer-events:none;
+  }
+  .stamp h3{
+    font-size:.78rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--umber); font-weight:500;
+    margin-bottom:1rem;
+  }
+  .stamp .verdict{
+    font-family:var(--font-display);
+    font-size: clamp(1.5rem, 3.6vw, 2.2rem);
+    line-height:1.04; letter-spacing:-0.01em;
+    font-weight:700;
+  }
+  .stamp .verdict em{ font-style:italic; color:var(--mocha); font-weight:500 }
+  .stamp ul{
+    list-style:none; margin-top:1.5rem; padding-top:1.2rem;
+    border-top:1px solid var(--rule);
+    display:grid; gap:.7rem;
+    font-size:.94rem;
+  }
+  .stamp li{ display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:baseline }
+  .stamp li b{
+    font-family:var(--font-display);
+    font-weight:600;
+    color:var(--ink);
+    font-size:.76rem; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .stamp li span{ font-style:italic; color:var(--umber) }
+  .stamp .meta{
+    margin-top:1.6rem;
+    padding-top:1.2rem;
+    border-top:1px solid var(--rule);
+    font-size:.8rem; color:var(--umber);
+    letter-spacing:.02em;
+  }
+  .stamp .meta a{ border-bottom:1px solid currentColor }
+
+  .hygiene__copy h2{
+    font-size: clamp(1.9rem, 5vw, 3.4rem);
+    margin-bottom:1.2rem;
+  }
+  .hygiene__copy h2 em{ font-style:italic; color:var(--mocha); font-weight:700 }
+  .hygiene__copy p{ font-size:1.05rem; line-height:1.65; color:#2a1f18 }
+  .hygiene__copy p + p{ margin-top:1rem }
+
+  /* ── about ─────────────────────────────────────────── */
+  .about{
+    display:grid;
+    grid-template-columns: minmax(0,.35fr) minmax(0, 1fr);
+    gap: clamp(1.6rem, 5vw, 4rem);
+    align-items:start;
+  }
+  @media (max-width:780px){ .about{ grid-template-columns:1fr } }
+  .about__lede{
+    font-family:var(--font-display);
+    font-size: clamp(1.6rem, 4.4vw, 2.6rem);
+    line-height:1.02; letter-spacing:-0.02em;
+    font-weight:700;
+  }
+  .about__body{
+    font-size:1.1rem; line-height:1.7;
+    color:#2a1f18;
+    max-width:55ch;
+  }
+  .about__body p + p{ margin-top:1rem }
+  .about__body .first::first-letter{
+    font-family:var(--font-display);
+    font-size:3.6rem;
+    font-weight:800;
+    float:left;
+    line-height:.88;
+    padding: .12rem .6rem 0 0;
+    color:var(--mocha);
+  }
+
+  /* ── footer letterhead ─────────────────────────────── */
+  footer{
+    border-top:1px solid var(--rule);
+    padding: clamp(2.6rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3.6rem);
+    margin-top:clamp(2rem, 5vw, 4rem);
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(1.6rem, 5vw, 4rem);
+    align-items:end;
+  }
+  @media (max-width:780px){ .footer-grid{ grid-template-columns:1fr } }
+  .signoff{
+    font-family:var(--font-display);
+    font-size: clamp(3rem, 11vw, 8.6rem);
+    line-height:.88; letter-spacing:-0.045em;
+    font-weight:800;
+    color:var(--ink);
+  }
+  .signoff em{ font-style:italic; color:var(--mocha); font-weight:500 }
+  .colophon{
+    font-size:.84rem; line-height:1.7; color:var(--umber);
+    letter-spacing:.02em;
+  }
+  .colophon b{ color:var(--ink); font-family:var(--font-display); font-weight:600; letter-spacing:.06em; text-transform:uppercase; font-size:.72rem; display:block; margin-bottom:.4rem }
+  .colophon p + p{ margin-top:.9rem }
+
+  /* selection */
+  ::selection{ background:var(--ink); color:var(--paper-warm) }
+</style>
+</head>
+<body>
+
+<!-- ── ticker ───────────────────────────────────── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>Sasans Shop</span>
+    <span>33 Kirkgate</span>
+    <span>Wakefield WF1 1HS</span>
+    <span>Food Hygiene Inspected · 1 May 2024</span>
+    <span>A retailer on Kirkgate</span>
+    <span>Sasans Shop</span>
+    <span>33 Kirkgate</span>
+    <span>Wakefield WF1 1HS</span>
+    <span>Food Hygiene Inspected · 1 May 2024</span>
+    <span>A retailer on Kirkgate</span>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- ── topbar ──────────────────────────────────── -->
+  <header class="topbar">
+    <div class="mark">Sasans Shop <em>— Kirkgate</em></div>
+    <nav>
+      <a href="#where">Where</a>
+      <a href="#hygiene">Hygiene</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- ── hero ────────────────────────────────────── -->
+  <section class="hero" style="border-top:none">
+    <h1 class="hero__name">Sasans<span class="dot">.</span></h1>
+    <aside class="hero__meta">
+      <b>A small retailer on Kirkgate.</b><br>
+      Thirty-three Kirkgate, central Wakefield, <i>WF1&nbsp;1HS</i>.<br><br>
+      Listed on the Food Standards Agency register and inspected last
+      in May 2024. No phone line, social handles or trading hours have
+      been published online — what follows is what can be verified, and
+      no more.
+    </aside>
+  </section>
+
+  <!-- ── where ───────────────────────────────────── -->
+  <section id="where" class="reveal">
+    <div class="eyebrow">Where to find it</div>
+    <div class="where">
+      <div class="letterhead">
+        Thirty-three<br>
+        <em>Kirkgate,</em><br>
+        Wakefield.
+        <span class="post">WF1&nbsp;1HS</span>
+      </div>
+      <div class="find">
+        <p>
+          Kirkgate is one of central Wakefield's principal streets and
+          shares its name with Wakefield Kirkgate railway station, a
+          short walk from the shopfront.
+        </p>
+        <p>
+          The address sits inside the WF1 postcode area — the historic
+          core of the city — and is accessible on foot from the main
+          retail spine.
+        </p>
+        <a class="cta" href="https://www.google.com/maps/search/?api=1&amp;query=33+Kirkgate+Wakefield+WF1+1HS" target="_blank" rel="noopener">
+          Open in Google Maps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M7 17L17 7M9 7h8v8"/>
+          </svg>
+        </a>
+        <dl>
+          <dt>Street</dt><dd>Kirkgate, central Wakefield</dd>
+          <dt>Postcode</dt><dd>WF1&nbsp;1HS</dd>
+          <dt>Category</dt><dd>Retailers — other (FSA classification)</dd>
+          <dt>Authority</dt><dd>Wakefield Metropolitan District Council</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── hygiene ─────────────────────────────────── -->
+  <section id="hygiene" class="hygiene reveal">
+    <div class="eyebrow">Food Standards Agency record</div>
+    <div class="hygiene__inner">
+      <div class="stamp">
+        <h3>Inspection · 1 May 2024</h3>
+        <div class="verdict">
+          Hygienic food handling and condition rated <em>very good.</em>
+        </div>
+        <ul>
+          <li><b>Food handling</b><span>Very good</span></li>
+          <li><b>Cleanliness &amp; condition</b><span>Very good</span></li>
+          <li><b>Food-safety management</b><span>Generally satisfactory</span></li>
+        </ul>
+        <p class="meta">
+          Source: <a href="https://ratings.food.gov.uk/business/1611551/sasans-shop" target="_blank" rel="noopener">ratings.food.gov.uk · business&nbsp;#1611551</a><br>
+          Local authority: food@wakefield.gov.uk
+        </p>
+      </div>
+      <div class="hygiene__copy">
+        <h2>A public record — <em>independently verified.</em></h2>
+        <p>
+          Every food-selling premises in England is inspected by its
+          local authority on behalf of the Food Standards Agency, and
+          the result is published as public record.
+        </p>
+        <p>
+          The most recent published inspection for this address was
+          carried out on the first of May, 2024. Hygienic food
+          handling and the cleanliness and condition of the building
+          were both rated <i>very good</i>; the management of food
+          safety, <i>generally satisfactory</i>.
+        </p>
+        <p>
+          The full record — including the local authority that
+          performed the inspection — is held on the FSA's public
+          register and linked from the stamp opposite.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── about ───────────────────────────────────── -->
+  <section id="about" class="reveal">
+    <div class="eyebrow">About this listing</div>
+    <div class="about">
+      <div class="about__lede">A Kirkgate shop, set in plain&nbsp;type.</div>
+      <div class="about__body">
+        <p class="first">
+          This page is a deliberately minimal record of a small retailer
+          on Kirkgate, in Wakefield. The business is registered, has
+          been inspected, and trades from a fixed address in the WF1
+          postcode area.
+        </p>
+        <p>
+          Beyond those few public facts there is, at the time of
+          writing, no published phone number, no opening hours, no
+          social-media presence and no online shopfront. Rather than
+          invent any of those details, this page restricts itself to
+          what is verifiable on the public record — the name, the
+          street, the postcode, the FSA inspection, and a direct link
+          to the official entry.
+        </p>
+        <p>
+          If you run the shop, or know someone who does, the page can
+          be expanded with real opening hours, a real telephone
+          number, and a real description of the stock kept inside.
+          Until then, it stands as a quiet placeholder for a small
+          business that does not yet have a web presence of its own.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── footer ──────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="signoff">
+        Sasans<em>.</em><br>
+        Kirkgate.
+      </div>
+      <div class="colophon">
+        <p>
+          <b>Address</b>
+          33 Kirkgate<br>
+          Wakefield<br>
+          West Yorkshire<br>
+          WF1&nbsp;1HS
+        </p>
+        <p>
+          <b>On the public record</b>
+          Food Standards Agency, business&nbsp;#1611551<br>
+          <a href="https://ratings.food.gov.uk/business/1611551/sasans-shop" target="_blank" rel="noopener">ratings.food.gov.uk</a>
+        </p>
+        <p>
+          <b>Colophon</b>
+          Set in Bricolage Grotesque and Newsreader.
+          No telephone number, opening hours, prices, reviews, owner
+          names or stock claims appear on this page — only details
+          that can be verified on a public register.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
